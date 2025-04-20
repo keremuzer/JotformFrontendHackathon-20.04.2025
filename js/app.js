@@ -7,6 +7,23 @@ const endpoint =
 
 const container = document.getElementById("product-container");
 
+// log the response to the console
+fetch(endpoint, {
+	method: "GET",
+})
+	.then((response) => {
+		if (!response.ok) {
+			throw new Error("Network response was not ok " + response.statusText);
+		}
+		return response.json();
+	})
+	.then((data) => {
+		console.log(data);
+	})
+	.catch((error) => {
+		console.error("There was a problem with the fetch operation:", error);
+	});
+
 fetch(endpoint)
 	.then((response) => {
 		if (!response.ok) {
@@ -18,9 +35,10 @@ fetch(endpoint)
 		const products = data.content.products;
 
 		products.forEach((product) => {
-			const name = product.name || "Ürün Adı";
-			const description = product.description || "Açıklama bulunamadı.";
-			const price = product.price ? `${product.price}$` : "Fiyat yok";
+			const name = product.name;
+			const description = product.description;
+			const price = product.price ? `${product.price}$` : "0$";
+			const pid = product.pid;
 
 			let imageURL = "";
 			try {
@@ -42,6 +60,12 @@ fetch(endpoint)
             <button class="add-to-cart" data-id="${product.pid}">Add to Cart</button>
           </div>
         `;
+
+			card.addEventListener("click", (e) => {
+				if (!e.target.classList.contains("add-to-cart")) {
+					window.location.href = `product.html?pid=${pid}`;
+				}
+			});
 
 			container.appendChild(card);
 		});
