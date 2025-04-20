@@ -72,10 +72,6 @@ fetch(endpoint)
 			addToCartBtn.addEventListener("click", (e) => {
 				e.stopPropagation();
 				addToCart(product.pid);
-
-				// log the cart to the console
-				const cart = JSON.parse(localStorage.getItem("cart")) || [];
-				console.log("Cart updated:", cart);
 			});
 
 			container.appendChild(card);

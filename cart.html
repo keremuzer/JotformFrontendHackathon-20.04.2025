@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Shopping Cart</title>
+		<link rel="stylesheet" href="./css/styles.css" />
+	</head>
+	<body>
+		<header>
+			<a href="./index.html"
+				><img id="logo" src="./assets/logo.png" alt="Logo"
+			/></a>
+			<div id="buttons">
+				<button id="shopping-cart" class="shopping-cart">Shopping Cart</button>
+			</div>
+		</header>
+
+		<main id="cart-container">
+			<p id="empty-message">Your cart is empty.</p>
+
+			<div id="cart-items">
+				<div class="cart-item">
+					<img src="" alt="" class="cart-item-image" />
+					<div class="cart-item-info">
+						<h2 class="cart-item-name">Product Name</h2>
+						<p class="cart-item-description">Product Description</p>
+						<p class="cart-item-price">$0.00</p>
+					</div>
+					<div class="cart-item-quantity">
+						<button class="decrease-quantity">-</button>
+						<span class="quantity">1</span>
+						<button class="increase-quantity">+</button>
+					</div>
+					<div class="cart-item-total-price">
+						<p>Total: <span class="total-price">$0.00</span></p>
+					</div>
+				</div>
+			</div>
+
+			<div id="total-price">
+				<p>Total: <span id="total-amount">$0.00</span></p>
+			</div>
+
+			<button id="checkout-btn" class="checkout-btn">
+				Proceed to Checkout
+			</button>
+		</main>
+
+		<script type="module" src="./js/cart.js"></script>
+	</body>
+</html>
