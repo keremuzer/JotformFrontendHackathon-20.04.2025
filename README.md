@@ -6,10 +6,13 @@ Please fill in your information after forking this repository:
 - **Name**: Kerem Üzer
 
 ## Project Description
-[Add a brief description of your project here]
+This is a minimal e-commerce frontend built using **vanilla JavaScript**, **HTML**, and **CSS**.  
+Users can browse products, view product details, add items to their shopping cart, adjust quantities, and proceed to checkout.  
+All product data is dynamically fetched from the **Jotform Form API**, and cart state is stored in `localStorage` to persist across page reloads.
 
 ## Getting Started
-[Add instructions for setting up and running the project]
+To get started with this project, simply clone the repository and open the `index.html` using live server extension.
+
 
 ## License
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details. 
