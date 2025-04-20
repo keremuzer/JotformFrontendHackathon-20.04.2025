@@ -64,6 +64,17 @@ function loadCart() {
 						product.price * item.quantity
 					).toFixed(2)}`;
 					updateCartTotal();
+				} else if (item.quantity === 1) {
+					const cart = JSON.parse(localStorage.getItem("cart")) || [];
+					const updatedCart = cart.filter((i) => i.pid !== item.pid);
+					localStorage.setItem("cart", JSON.stringify(updatedCart));
+					productElement.remove();
+					updateCartTotal();
+
+					if (updatedCart.length === 0) {
+						const cartContainer = document.getElementById("cart-items");
+						cartContainer.innerHTML = "<p>Your cart is empty.</p>";
+					}
 				}
 			});
 
