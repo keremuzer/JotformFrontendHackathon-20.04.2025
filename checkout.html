@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Checkout - Your Shop</title>
+		<link rel="stylesheet" href="./css/styles.css" />
+	</head>
+	<body>
+		<header>
+			<a href="./index.html"
+				><img id="logo" src="./assets/logo.png" alt="Logo"
+			/></a>
+			<div id="buttons">
+				<button id="shopping-cart" class="shopping-cart">Shopping Cart</button>
+			</div>
+		</header>
+
+		<main>
+			<section id="checkout-section">
+				<h2>Checkout</h2>
+
+				<div id="checkout-container">
+					<form id="checkout-form">
+						<label for="first-name">First Name</label>
+						<input type="text" id="first-name" name="first-name" required />
+
+						<label for="last-name">Last Name</label>
+						<input type="text" id="last-name" name="last-name" required />
+
+						<label for="email">Email</label>
+						<input type="email" id="email" name="email" required />
+
+						<label for="address">Address</label>
+						<input type="text" id="address" name="address" required />
+
+						<label for="city">City</label>
+						<input type="text" id="city" name="city" required />
+
+						<label for="zip">ZIP Code</label>
+						<input type="text" id="zip" name="zip" required />
+
+						<label for="payment-method">Payment Method</label>
+						<select id="payment-method" name="payment-method" required>
+							<option value="credit-card">Credit Card</option>
+						</select>
+
+						<button type="submit">Place Order</button>
+					</form>
+
+					<section id="cart-summary">
+						<h3>Your Order</h3>
+						<div id="cart-items">
+							<div class="cart-item">
+								<img src="" alt="" class="cart-item-image" />
+								<div class="cart-item-info">
+									<h2 class="cart-item-name">Product Name</h2>
+									<p class="cart-item-description">Product Description</p>
+									<p class="cart-item-price">$0.00</p>
+								</div>
+								<div class="cart-item-quantity">
+									<p>Quantity:</p>
+									<span class="quantity">1</span>
+								</div>
+								<div class="cart-item-total-price">
+									<p>Total: <span class="total-price">$0.00</span></p>
+								</div>
+							</div>
+						</div>
+						<div id="total-price">
+							<p>Total: $<span id="total-amount">0.00</span></p>
+						</div>
+					</section>
+				</div>
+			</section>
+		</main>
+
+		<footer></footer>
+		<script type="module" src="./js/checkout.js"></script>
+	</body>
+</html>
