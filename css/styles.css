@@ -1,1 +1,10 @@
 @import url("./normalize.css");
+
+header {
+	display: flex;
+	justify-content: space-between;
+}
+
+header #logo {
+	width: 120px;
+}
