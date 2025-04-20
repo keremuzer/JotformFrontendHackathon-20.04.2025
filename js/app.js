@@ -6,6 +6,7 @@ const endpoint =
 	"https://api.jotform.com/form/251074062405952/payment-info?apiKey={ee8a7c7fde4d46d8c7f207e95e7eec0f}";
 
 const container = document.getElementById("product-container");
+const sortSelect = document.getElementById("sort-options-select");
 
 // log the response to the console
 fetch(endpoint, {
@@ -48,44 +49,65 @@ async function loadProducts() {
 		}
 	}
 
-	products.forEach((product) => {
-		const { name, description, price = 0, pid } = product;
-
-		let imageURL = "";
-		try {
-			const parsedImages = JSON.parse(product.images);
-			imageURL = parsedImages.length > 0 ? parsedImages[0] : "";
-		} catch (err) {
-			imageURL = "";
+	function sortProducts(products, sortBy) {
+		if (sortBy === "alphabetical") {
+			return products.sort((a, b) => a.name.localeCompare(b.name));
+		} else if (sortBy === "price-asc") {
+			return products.sort((a, b) => a.price - b.price);
+		} else if (sortBy === "price-desc") {
+			return products.sort((a, b) => b.price - a.price);
 		}
+		return products;
+	}
 
-		const card = document.createElement("div");
-		card.className = "product-card";
-
-		card.innerHTML = `
-        <img src="${imageURL}" alt="${name}" class="product-image" />
-        <div class="product-info">
-          <h2 class="product-name">${name}</h2>
-          <p class="product-description">${description}</p>
-          <p class="product-price">${price}$</p>
-          <button class="add-to-cart" data-id="${pid}">Add to Cart</button>
-        </div>
-      `;
-
-		card.addEventListener("click", (e) => {
-			if (!e.target.classList.contains("add-to-cart")) {
-				window.location.href = `product.html?pid=${pid}`;
-			}
-		});
-
-		const addToCartBtn = card.querySelector(".add-to-cart");
-		addToCartBtn.addEventListener("click", (e) => {
-			e.stopPropagation();
-			addToCart(pid);
-		});
-
-		container.appendChild(card);
+	sortSelect.addEventListener("change", () => {
+		const sortedProducts = sortProducts(products, sortSelect.value);
+		renderProducts(sortedProducts);
 	});
+
+	function renderProducts(products) {
+		container.innerHTML = "";
+
+		products.forEach((product) => {
+			const { name, description, price = 0, pid } = product;
+
+			let imageURL = "";
+			try {
+				const parsedImages = JSON.parse(product.images);
+				imageURL = parsedImages.length > 0 ? parsedImages[0] : "";
+			} catch (err) {
+				imageURL = "";
+			}
+
+			const card = document.createElement("div");
+			card.className = "product-card";
+
+			card.innerHTML = `
+				<img src="${imageURL}" alt="${name}" class="product-image" />
+				<div class="product-info">
+					<h2 class="product-name">${name}</h2>
+					<p class="product-description">${description}</p>
+					<p class="product-price">${price}$</p>
+					<button class="add-to-cart" data-id="${pid}">Add to Cart</button>
+				</div>
+			`;
+
+			card.addEventListener("click", (e) => {
+				if (!e.target.classList.contains("add-to-cart")) {
+					window.location.href = `product.html?pid=${pid}`;
+				}
+			});
+
+			const addToCartBtn = card.querySelector(".add-to-cart");
+			addToCartBtn.addEventListener("click", (e) => {
+				e.stopPropagation();
+				addToCart(pid);
+			});
+
+			container.appendChild(card);
+		});
+	}
+	renderProducts(products);
 }
 
 document.addEventListener("DOMContentLoaded", loadProducts);
