@@ -5,6 +5,8 @@ const container = document.getElementById("product-detail-container");
 const urlParams = new URLSearchParams(window.location.search);
 const pid = urlParams.get("pid");
 
+import { addToCart } from "./utils.js";
+
 if (!pid) {
 	container.innerHTML = "<p>Product not found.</p>";
 } else {
@@ -35,6 +37,12 @@ if (!pid) {
           </div>
         </div>
       `;
+
+			const addToCartButton = container.querySelector(".add-to-cart");
+			addToCartButton.addEventListener("click", () => {
+				const pid = addToCartButton.getAttribute("data-id");
+				addToCart(pid);
+			});
 		})
 		.catch((err) => {
 			container.innerHTML = "<p>Error: " + err.message + "</p>";
