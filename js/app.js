@@ -7,6 +7,7 @@ const endpoint =
 
 const container = document.getElementById("product-container");
 const sortSelect = document.getElementById("sort-options-select");
+const searchInput = document.getElementById("search-input");
 
 // log the response to the console
 fetch(endpoint, {
@@ -60,8 +61,22 @@ async function loadProducts() {
 		return products;
 	}
 
+	function searchProducts(products, searchTerm) {
+		return products.filter((product) => {
+			return product.name.toLowerCase().includes(searchTerm.toLowerCase());
+		});
+	}
 	sortSelect.addEventListener("change", () => {
 		const sortedProducts = sortProducts(products, sortSelect.value);
+		const searchTerm = searchInput.value;
+		const filteredProducts = searchProducts(sortedProducts, searchTerm);
+		renderProducts(filteredProducts);
+	});
+
+	searchInput.addEventListener("input", () => {
+		const searchTerm = searchInput.value;
+		const filteredProducts = searchProducts(products, searchTerm);
+		const sortedProducts = sortProducts(filteredProducts, sortSelect.value);
 		renderProducts(sortedProducts);
 	});
 
