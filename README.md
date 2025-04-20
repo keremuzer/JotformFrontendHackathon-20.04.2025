@@ -11,7 +11,7 @@ Users can browse products, view product details, add items to their shopping car
 All product data is dynamically fetched from the **Jotform Form API**, and cart state is stored in `localStorage` to persist across page reloads.
 
 ## Getting Started
-To get started with this project, simply clone the repository and open the `index.html` using live server extension.
+To get started with this project, simply clone the repository and open the `index.html` using live server extension (or any other http server).
 
 
 ## License
