@@ -1,7 +1,7 @@
-let api_key = "ee8a7c7fde4d46d8c7f207e95e7eec0f";
+import { addToCart } from "./utils.js";
 
+const api_key = "ee8a7c7fde4d46d8c7f207e95e7eec0f";
 const api_url = "https://api.jotform.com/form/";
-
 const endpoint =
 	"https://api.jotform.com/form/251074062405952/payment-info?apiKey={ee8a7c7fde4d46d8c7f207e95e7eec0f}";
 
@@ -65,6 +65,17 @@ fetch(endpoint)
 				if (!e.target.classList.contains("add-to-cart")) {
 					window.location.href = `product.html?pid=${pid}`;
 				}
+			});
+
+			const addToCartBtn = card.querySelector(".add-to-cart");
+
+			addToCartBtn.addEventListener("click", (e) => {
+				e.stopPropagation();
+				addToCart(product.pid);
+
+				// log the cart to the console
+				const cart = JSON.parse(localStorage.getItem("cart")) || [];
+				console.log("Cart updated:", cart);
 			});
 
 			container.appendChild(card);

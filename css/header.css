@@ -1,0 +1,8 @@
+header {
+	display: flex;
+	justify-content: space-between;
+}
+
+header #logo {
+	width: 150px;
+}
