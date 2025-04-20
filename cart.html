@@ -12,10 +12,9 @@
 				><img id="logo" src="./assets/logo.png" alt="Logo"
 			/></a>
 			<a href="./cart.html"
-					><button id="shopping-cart" class="shopping-cart">
-						Shopping Cart
-					</button></a
-				>
+				><button id="shopping-cart" class="shopping-cart">
+					<img src="./assets/cart.png" alt="" /></button
+			></a>
 		</header>
 
 		<main id="cart-container">
@@ -37,11 +36,18 @@
 					</div>
 				</div>
 			</div>
-			<div id="total-price">
-				<p>Total: <span id="total-amount">$0.00</span></p>
-			</div>
+			<div id="proceed container">
+				<div id="total-price">
+					<p>Total:</p>
+					<span id="total-amount">$0.00</span>
+				</div>
 
-			<a href="./checkout.html"><button id="checkout-btn" class="checkout-btn">Checkout</button><a>
+				<a href="./checkout.html">
+					<button id="checkout-btn" class="checkout-btn">
+						Proceed to Checkout
+					</button>
+				</a>
+			</div>
 		</main>
 
 		<script type="module" src="./js/cart.js"></script>
