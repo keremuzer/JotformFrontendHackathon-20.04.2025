@@ -28,8 +28,7 @@ body {
 	margin-top: 10px;
 }
 
-#checkout-form input,
-#checkout-form select {
+#checkout-form input {
 	padding: 10px;
 	border: 1px solid #ccc;
 	border-radius: 4px;
@@ -62,15 +61,14 @@ body {
 .cart-item {
 	display: flex;
 	gap: 15px;
-	margin-bottom: 15px;
 	border-bottom: 1px solid #eee;
-	padding-bottom: 15px;
+	padding-bottom: 5px;
 }
 
 .cart-item img {
 	width: 80px;
 	height: 80px;
-	object-fit: cover;
+	object-fit: contain;
 	border-radius: 4px;
 }
 
@@ -97,7 +95,7 @@ body {
 }
 
 #total-price {
-	margin-top: 20px;
+	margin-top: 10px;
 	font-weight: bold;
 	font-size: 18px;
 	text-align: right;
